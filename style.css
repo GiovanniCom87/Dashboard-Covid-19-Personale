@@ -1,0 +1,373 @@
+:root{
+    --main-color: #17a2b8;
+    --main-gradient: linear-gradient(315deg, #17a2b8, #75c5d1);
+    --background-color: linear-gradient(120deg, #15193a 50%, transparent);
+    --background-gradient: linear-gradient(250deg, #1a2046 30%, #4b5ca7, #181c42 );
+    --light-gradient: linear-gradient(90deg,#f0efef, #c9c6c6);
+    --second-color: #2ab047;
+    --second-gradient: linear-gradient(315deg, #2ab047, #cad760);
+    --third-color: #ff6428;
+    --third-gradient: linear-gradient(315deg, #ff6428, #ffc865);
+    --fourth-color: #a7a4a4;
+    --fourth-gradient: linear-gradient(90deg, #fa7224, #f89a63);
+    --accent-color: #f43d3a;
+    --accent-gradient: linear-gradient(315deg, #f43d3a, #f78583);
+    --dark-color: #1a1a1a;
+    --dark-gradient: linear-gradient(315deg, #222222, #5a5959);   
+}
+
+*{
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: var(--background-gradient);
+    overflow-x: hidden;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+/* scrollbar customization */
+/* width */
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: #2c3377; 
+border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #15193a; 
+border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #0d0f24; 
+}
+
+::selection{
+    background: transparent;
+}
+
+.text-accent{
+    color: var(--accent-color);
+}
+
+.text-fourth{
+    color: #ffc865;
+}
+
+.bg-main{
+    background: var(--main-gradient);
+}
+
+.bg-second{
+    background: var(--second-gradient);
+}
+.bg-third{
+    background: var(--third-gradient);
+}
+.bg_dark{
+    background: var(--dark-gradient);
+}
+
+.bg-accent{
+    background: var(--accent-gradient);
+}
+
+.title{
+    font-size: 50px;
+}
+
+.subtitle{
+    font-size: 25px;
+}
+
+@media screen and (max-width:576px){
+    .title{
+        font-size: 35px;
+    }
+    .subtitle{
+        font-size: 20px;
+    }
+}
+
+.modal-custom{
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 4%;
+    /* padding-bottom: 5%; */
+    background-color: rgba(0,0,0,0.5);
+    overflow-y: scroll;
+}
+
+.modal-custom-content{
+    background: #f0efef;
+    margin: auto;
+    width: 70vw;
+    border-radius: 10px;
+    color: #15193a;
+}
+
+.modal-custom.active{
+    z-index: 10;
+    opacity: 1;
+}
+
+@media screen and (max-width:769px){
+    .modal-custom-content{
+        width: 100%;
+    }
+}
+
+.card-custom{
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow:  7px 7px 10px var(--dark-color);
+    background: var(--light-gradient);
+    transition: 0.2s;
+}
+
+.card-custom:hover{
+    box-shadow:  3px 3px 5px var(--dark-color);
+}
+
+.card-custom:active{
+    box-shadow: inset 1px 1px 2px var(--dark-color), inset -1px -1px 2px #b1afafa1;
+}
+
+.btn-circle, .btn-circle:focus{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    outline: 0;
+    border: 0;
+    background: var(--light-gradient);
+    box-shadow:  7px 7px 10px var(--dark-color);
+}
+
+.btn-circle:hover{
+    box-shadow:  3px 3px 5px var(--dark-color);
+}
+
+.btn-circle:active{
+    box-shadow: inset 1px 1px 2px var(--dark-color), inset -1px -1px 2px #b1afafa1;
+}
+
+
+.scrollable{
+    margin-top: 25px;
+    overflow-y: scroll;
+    height: 500px;
+}
+
+.progress{
+    background: var(--background-color);
+}
+
+.progress-bar{
+    background: var(--main-gradient);
+}
+
+.title-bg{
+    min-height: 230px;
+    clip-path: polygon(0 0, 100% 0%, 100% 58%, 24% 100%, 0 58%);
+    background: var(--background-color);
+    text-shadow: 5px 5px 10px rgba(51, 51, 51, 0.616);
+}
+
+.footer-bg{
+    min-height: 60px;
+    clip-path: polygon(100% 38%, 100% 100%, 0 100%, 0 31%, 64% 0);
+    background: var(--background-color);
+    
+}
+
+.map{
+    min-height: 400px;
+    max-width: 948px;
+    /* background: blue; */
+}
+
+
+
+.exagon-wrap{
+    filter: drop-shadow(7px 7px 6px var(--dark-color));
+    transition: 0.2s;
+}
+
+.exagon-wrap:hover{
+    filter: drop-shadow(5px 5px 3px var(--dark-color));
+    transform: scale(0.997);
+}
+
+.exagon-wrap:active{
+    filter: drop-shadow(3px 3px 1px var(--dark-color));
+    transform: scale(0.98);
+}
+
+.exagon{
+    width: 280px;
+    height: 242px;
+    -webkit-clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    background-color: red;
+    position: absolute;
+}
+
+@media screen and (max-width:575px){
+    .exagon{
+        position: static;
+    }
+}
+
+.ex-1{
+    top: 125px;
+    background: var(--dark-gradient);
+}
+
+.ex-2{
+    top: 0;
+    left: 222px;
+    background: var(--second-gradient);
+}
+
+.ex-3{
+    top: 125px;
+    left: 445px;
+    background: var(--accent-gradient);
+}
+
+.ex-4{
+    background: var(--third-gradient);
+    left: 667px;
+}
+
+@media screen and (max-width:1023px){
+    .ex-1{
+        top: 128px;
+    }
+    
+    .ex-2{
+        top: 0;
+        left: 222px;
+    }
+    
+    .ex-3{
+        top: 382px;
+        left: 0;
+    }
+    
+    .ex-4{
+        left: 222px;
+        top: 255px;
+    } 
+
+    .map{
+        min-height: 625px;
+        max-width: 502px;
+    }
+}
+
+.social-link{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    color: #fff;
+    background: var(--dark-gradient);
+    transition: all 0.4s;
+    position: relative;
+}
+
+.social-link i{
+    z-index: 3;
+}
+
+.social-link::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: var(--light-gradient);
+    transform: scale(0);
+    transition: all 0.4s;
+}
+
+.social-link:hover{
+    color: var(--dark-color);
+}
+
+.social-link:hover.social-link::after{
+    transform: scale(1);
+}
+
+.pin-new{
+    border-right: 4px solid rgba(0, 0, 255, 0.616);
+    margin-right: 2px;
+    margin-bottom: 7px;
+    width: 5px;
+}
+
+.plot{
+    height: 200px;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+.pieChart{
+    width: 400px;
+    height: 400px;
+    border-radius: 100%;
+    position: relative;
+}
+
+.pieChart::after{
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 50px;
+    top: 50px;
+    z-index: 10;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+@media only screen and (max-width:576px){
+    .pieChart{
+        width: 200px;
+        height: 200px;
+    }
+
+    .pieChart::after{
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        left: 50px;
+        top: 50px;
+        z-index: 10;
+        border-radius: 50%;
+        background-color: #fff;
+    }
+}

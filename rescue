@@ -1,0 +1,65 @@
+<div class="row">
+                    <div class="col-12 mb-3 pl-4">
+                        <p class="h2 text-main">${dataAboutRegion.denominazione_regione}</p>
+                    </div>
+                </div>
+                <div class="container scrollabile">
+                    <div class="row pt-3 mx-auto">
+                        <div class="col-6 col-md-3 text-center">
+                            <p class="lead">Nuovi positivi: <span class="h4 text-danger d-block d-md-inline">${dataAboutRegion.nuovi_positivi}</span></p>
+                        </div>
+                        <div class="col-6 col-md-3 text-center">
+                            <p class="lead">Decessi: <span class="h4 text-danger d-block d-md-inline">${dataAboutRegion.deceduti}</span></p>
+                        </div>
+                        <div class="col-6 col-md-3 text-center">
+                            <p class="lead">Guariti: <span class="h4 text-danger d-block d-md-inline">${dataAboutRegion.dimessi_guariti}</span></p>
+                        </div>
+                        <div class="col-6 col-md-3 text-center">
+                            <p class="lead">Ricoverati: <span class="h4 text-danger d-block d-md-inline">${dataAboutRegion.ricoverati_con_sintomi}</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="mb-0 mt-5 text-main font-weight-bold lead">Trend nuovi casi</p>
+                            <div id="trendNew" class="d-flex align-items-end plot"></div>
+                        </div>
+                        <div class="col-12">
+                            <p class="mb-0 mt-5 text-main font-weight-bold lead">Trend decessi</p>
+                            <div id="trendDeath" class="d-flex align-items-end plot"></div>
+                        </div>
+                        <div class="col-12">
+                            <p class="mb-0 mt-5 text-main font-weight-bold lead">Trend guariti</p>
+                            <div id="trendRecovered" class="d-flex align-items-end plot"></div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                let trendData = sorted.map(el=>el).reverse().filter(el=>el.denominazione_regione == region).map(el=>[el.data, el.nuovi_positivi, el.deceduti, el.dimessi_guariti])
+        
+                let maxNew = Math.max(...trendData.map(el => el[1]))
+                let maxDeath = Math.max(...trendData.map(el => el[2]))
+                let maxRecovered = Math.max(...trendData.map(el => el[3]))
+
+                let trendNew = document.querySelector('#trendNew')
+                let trendDeath = document.querySelector('#trendDeath')
+                let trendrecovered = document.querySelector('#trendRecovered')
+
+                trendData.forEach(el=>{
+                    let colNew = document.createElement('div')
+                    colNew.classList.add('pin-new')
+                    colNew.style.height = `${70*el[1]/maxNew}%`
+                    trendNew.appendChild(colNew)
+
+                    let colDeath = document.createElement('div')
+                    colDeath.classList.add('pin-death')
+                    colDeath.style.height = `${70*el[2]/maxDeath}%`
+                    trendDeath.appendChild(colDeath)
+
+                    let colRecovered = document.createElement('div')
+                    colRecovered.classList.add('pin-recovered')
+                    colRecovered.style.height = `${70*el[3]/maxRecovered}%`
+                    trendRecovered.appendChild(colRecovered)

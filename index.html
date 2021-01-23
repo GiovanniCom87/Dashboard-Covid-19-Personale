@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">  
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+    <title>Dashboard Covid-19</title>
+  </head>
+  <body>
+
+    <div class="modal-custom">
+        <div class="modal-custom-content p-3 p-md-4"></div>
+    </div>
+
+    <div class="container-fluid title-bg pt-2 pt-md-4 pb-4">
+        <div class="row py-3 py-md-3 px-2">
+            <div class="col-12 col-md-8 mx-auto px-0">
+                <h1 class="title font-weight-bold text-light text-center text-md-left">Dashboard Covid-19</h1>
+                <p class="subtitle text-light text-center text-md-left">Dati aggiornati al: <span id="data"></span></p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid poligon"></div>
+    
+    <!-- card rettangolari -->
+    <!-- <div class="container">
+        <div class="row mt-5">
+            <div class="col-12 col-md-3 mb-3">
+                <div class="card-custom bg_dark px-3 py-1">
+                    <h4 class="text-light mb-5">Casi totali</h4>
+                    <h2 id="totalCases1" class="text-right text-light">---</h2>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 mb-3">
+                <div class="card-custom bg-second px-3 py-1">
+                    <h4 class="text-light mb-5">Totale guariti</h4>
+                    <h2 id="totalRecovered1" class="text-right text-light">---</h2>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 mb-3">
+                <div class="card-custom bg-accent px-3 py-1">
+                    <h4 class="text-light mb-5">Totale morti</h4>
+                    <h2 id="totalDeceased1" class="text-right text-light">---</h2>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 mb-3">
+                <div class="card-custom bg-third px-3 py-1">
+                    <h4 class="text-light mb-5">Attuali</h4>
+                    <h2 id="totalPositive1" class="text-right text-light">---</h2>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- card esagonali -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 px-0 map position-relative mx-auto">
+                <div class="exagon-wrap">
+                    <div class="exagon ex-1 my-2 my-md-0 mx-auto mx-md-0 py-4 d-flex align-items-center justify-content-center" data-trend="nuovi_positivi">
+                        <div>
+                            <h4 class="text-center text-light mb-2">Casi totali</h4>
+                            <h2 id="totalCases" class="text-center text-light h1">---</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="exagon-wrap">
+                    <div class="exagon ex-2 my-2 my-md-0 mx-auto mx-md-0 py-4 d-flex align-items-center justify-content-center" data-trend="dimessi_guariti">
+                        <div>
+                            <h4 class="text-center text-light mb-2">Guariti</h4>
+                            <h2 id="totalRecovered" class="text-center text-light h1">---</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="exagon-wrap">
+                    <div class="exagon ex-3 my-2 my-md-0 mx-auto mx-md-0 py-4 d-flex align-items-center justify-content-center" data-trend="deceduti">
+                        <div>
+                            <h4 class="text-center text-light mb-2">Deceduti</h4>
+                            <h2 id="totalDeceased" class="text-center text-light h1">---</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="exagon-wrap">
+                    <div class="exagon ex-4 my-2 my-md-0 mx-auto mx-md-0 py-4 d-flex align-items-center justify-content-center" data-trend="totale_positivi">
+                        <div>
+                            <h4 class="text-center text-light mb-2">Attuali</h4>
+                            <h2 id="totalPositive" class="text-center text-light h1">---</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-9 col-md-6 px-4">
+                <h2 class="text-light">Totale casi per regione</h2>
+            </div>
+            <div class="col-3 col-md-6 text-right">
+                <button id="pieTrigger" class="btn btn-circle bg-light"><i class="fas fa-chart-pie"></i> </button>
+            </div>
+            <div class="col-12 col-lg-8 scrollable mb-4">
+                <div id="cardWrapper" class="row p-3">                   
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 scrollable mb-4">
+                <div id="progressWrapper" class="row p-3">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container-fluid poligonfooter"></div>
+        <div class="container-fluid footer-bg pt-4 pb-1">
+            <div class="row my-4">
+                <div class="col-12 d-flex justify-content-center ">
+                    <a class="text-decoration-none mr-3" href="https://www.linkedin.com/in/giovanni-comparato-aa9874199/">
+                        <div class="social-link justify-content-center d-flex align-items-center">
+                            <i class="fab fa-2x fa-linkedin-in"></i>
+                        </div>
+                    </a>
+                    <a class="text-decoration-none" href="">
+                        <div class="social-link justify-content-center d-flex align-items-center">
+                            <i class="fab fa-2x fa-gitlab"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <p class="text-light text-center h6" ><i class="far fa-copyright"></i> 2021 Giovanni Comparato</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+   
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  
+  <script src="script.js"></script>
+
+  </body>
+</html>
